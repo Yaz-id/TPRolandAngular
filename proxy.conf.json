@@ -1,0 +1,9 @@
+{ 
+
+ "/login-api" : { "secure" : false ,
+                    "target" : "http://localhost:8282" }  ,
+
+"/api" : { "secure" : false ,
+                    "target" : "https://localhost:7012" }
+
+}

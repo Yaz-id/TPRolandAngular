@@ -1,0 +1,36 @@
+<p>student</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- tableau des Students existants -->
+            <table class="table table-bordered " border="3">
+                <tr><th>ID</th><th>Prenom</th><th>Nom</th><th>Date de Naissance</th></tr>
+                
+                <tr *ngFor="let s of studentList" (click)="onSelect(s)" 
+                [class.selected]="s==selectedStudent"> 
+                    <td  scope="col">{{s.id}}</td>
+                    <td  scope="col">{{s.firstMidName}}</td>
+                    <td  scope="col">{{s.lastName}}</td>
+                    <td  scope="col">{{s.enrollmentDate}}</td>
+                </tr>
+            </table>
+   </div>
+ <div class="col-sm-6">
+            <!-- formulaire de mise à jour d'un Student selectionné  -->
+          <form class="row mt-1">
+            <label>id:</label><label>{{student.id}}</label><br/>
+            <label>firstMidName:</label><input [(ngModel)]="student.firstMidName" name="firstMidName" 
+             required class="form-control" required name="firstMidName"/><br/>
+            <label>lastName:</label><input [(ngModel)]="student.lastName" name="lastName"  
+            required class="form-control" required name="lastdName"/><br/>
+            <label>enrollmentDate:</label><input type="date" [(ngModel)]="student.enrollmentDate"  name="enrollmentDate"
+             required class="form-control" required name="enrollmentDate"/><br/>
+
+            <button (click)="onUpdate()" [disabled]="selectedStudent==null ">update/put</button> &nbsp; 
+            <button (click)="onNew()">new</button> &nbsp; 
+            <button (click)="onAdd()" [disabled]="selectedStudent!=null">add/post</button> &nbsp; 
+            <button (click)="onDelete()" [disabled]="selectedStudent==null">delete</button>
+
+         </form>
+</div>
+        {{message}}
+   </div>

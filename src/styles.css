@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+.masted{background-size: cover;
+    min-height: 60vh ;
+    position: relative;
+    color : rgb(124, 255, 237);
+    text-shadow: 2px 2px 2px rgba(0,0,0,2);
+    
+
+}
+h1{
+    font-size: 4rem ;
+}
+
+.color-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+   
+}
+
+@media(max-width : 768px){
+    .masted{
+        min-height: 200px;
+    }
+    h1{
+        font-size: calc(1.525rem + 3.3vw);
+    }
+}

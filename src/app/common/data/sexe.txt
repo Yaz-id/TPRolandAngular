@@ -1,0 +1,9 @@
+export class sexe {
+    constructor(
+        public Homme : string="",
+        public Femme : string="",
+    ){}
+    epfpzef
+    qrgoaergoaqerg
+    sfdgaêta$zetgo
+}
