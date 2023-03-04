@@ -1,3 +1,5 @@
 .table-bordered{ background-color: rgb(220, 231, 227);}
 .selected { color : rgb(35, 117, 118); font-weight: bold;}
 .form-control{ color: rgb(114, 42, 165);}
+.text{ color :rgb(220, 231, 227); font-size: large;}
+.btn{color:rgb(8, 45, 45)}
