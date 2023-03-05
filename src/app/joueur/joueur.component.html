@@ -1,88 +1,98 @@
-<p>JOUEUR</p>
+<p class="text">JOUEUR</p>
 
-    <div class="col-m-12">
-        <div class="col-sm-6">
-            <form >
-            <!-- tableau des Students existants -->
-            <table class="table table-success table-striped" border="2">
-                <thead>
-                    <tr>
-                        <th>ID</th><th>Prenom</th><th>Nom</th><th>Date de Naissance</th><th>Nationalite</th>
-                        <th>Sexe</th>
-                    </tr>
-                  </thead>
-                <tbody>
-                    <tr *ngFor="let j of joueurList" (click)="onSelect(j)" 
-                        [class.selected]="j==selectedJoueur"> 
-                        <td  scope="col">{{j.id}}</td>
-                        <td  scope="col">{{j.prenom}}</td>
-                        <td  scope="col">{{j.nom}}</td>
-                        <td  scope="col">{{j.dateNaissance}}</td>
-                        <td  scope="col">{{j.nationalite.nomFrFr}}</td>
-                        <td  scope="col">{{textSexe(j.sexe)}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
-   </div>
- <div class="col-m-6">
-          <!-- formulaire de mise à jour d'un Student selectionné  -->
-          <form >
-            <label class="text">ID:</label><label>{{joueur.id}}</label><br/>
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                    <label class="text">Prenom:</label><input [(ngModel)]="joueur.prenom" name="prenom" 
-                    required class="form-control" required name="prenom"/><br/>
-                </div>
-            </div>
-
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">            
-                    <label class="text">Nom:</label><input [(ngModel)]="joueur.nom" name="nom" 
-                    required class="form-control" required name="nom"/><br/>
-                </div>
-            </div>
-
-            <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                    <label class="text">Date de naissance:</label><input type="text" [(ngModel)]="joueur.dateNaissance"  name="dateNaissance"
-                    required class="form-control" required name="dateNaissance"/><br/>
-                </div>
-            </div>
-            
-            <div class="row g-3 align-items-center">
-                <div class="col-auto form-group row">
-                    <label for="emailpetit" class="col-auto col-form-label col-form-label-sm text">Nationalite:</label>
-                    <select [(ngModel)]="joueur.nationalite.id" name="listePays" 
-                        required class="form-control" required name="nationalite">
-                        <option [ngValue]="p.id" *ngFor="let p of listePays">{{p.nomFrFr}}</option>
-                    </select><br/>
-                </div>
-            </div>
-           
-
-            
-
-             <!--label>nationalite:</label><input [(ngModel)]="joueur.nationalite.nomFrFr" name="nationalite" 
-                  required class="form-control" required name="nationalite"/><br/>-->
-
-             <!--label>sexe:</label><input [(ngModel)]="joueur.sexe" name="sexe" 
-                  required class="form-control" required name="sexe"/><br/>-->
-            <div class="form-check form-check-inline text">
-                <input [(ngModel)]="joueur.sexe" class="form-check-input" type="radio" name="sexe" [value]="0">
-                <label class="form-check-label" for="sexe">Homme</label>
-            </div>
-            <div class="form-check form-check-inline text">
-                <input [(ngModel)]="joueur.sexe" class="form-check-input" type="radio" name="sexe" [value]="1">
-                <label class="form-check-label" for="sexe">Femme</label>
-            </div>
-                  <br/><br/>
-            <button type="button" class="btn btn-info" (click)="onUpdate()" [disabled]="selectedJoueur==null ">Mettre à jour</button> &nbsp; 
-            <button type="button" class="btn btn-success" (click)="onNew()">Nouveau</button> &nbsp; 
-            <button type="button" class="btn btn-primary" (click)="onAdd()" [disabled]="selectedJoueur!=null">Ajouter</button> &nbsp; 
-            <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="selectedJoueur==null">Effacer</button>
-
-         </form>
+<div class="row">
+  <div class="col-sm-6">
+    <form >
+      <!-- tableau des Joueurs existants -->
+      <table class="table table-success table-striped" border="1">
+        <thead>
+          <tr>
+            <th>ID</th><th>Prenom</th><th>Nom</th><th>Date de Naissance</th><th>Nationalite</th>
+            <th>Sexe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let j of joueurList" (click)="onSelect(j)"
+              [class.selected]="j==selectedJoueur">
+              <td  scope="col">{{j.id}}</td>
+              <td  scope="col">{{j.prenom}}</td>
+              <td  scope="col">{{j.nom}}</td>
+              <td  scope="col">{{j.dateNaissance}}</td>
+              <td  scope="col">{{j.nationalite.nomFrFr}}</td>
+              <td  scope="col">{{textSexe(j.sexe)}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </form>
 </div>
-     
-   </div>
+<!-- formulaire de mise à jour d'un Joueurs selectionné  -->
+  <div class="col-sm-6">
+    <form >
+      <div class="row mt-1">
+        <label class="text col-sm-4 text-sm-end">Id: </label>
+          <div class="col-sm-4">
+            <input [value]="joueur.id" disabled="true" name="{{joueur.id}}"
+                    required class="form-control"/>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <label class="text col-sm-4 text-sm-end">Prenom:</label>
+        <div class="col-sm-4">
+          <input [(ngModel)]="joueur.prenom" name="prenom"
+                  required class="form-control" required name="prenom"/>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <label class="text col-sm-4 text-sm-end">Nom:</label>
+        <div class="col-sm-4">
+          <input [(ngModel)]="joueur.nom" name="nom"
+                  required class="form-control" required name="nom"/>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <label class="text col-sm-4 text-sm-end">Date de naissance:</label>
+        <div class="col-sm-4">
+          <input type="text" [(ngModel)]="joueur.dateNaissance"  name="dateNaissance"
+                  required class="form-control" required name="dateNaissance"/>
+          </div>
+      </div>
+
+      <div class="row mt-1">
+        <label class="col-sm-4 text-sm-end text">Nationalite:</label>
+        <div class="col-sm-4">
+          <select [(ngModel)]="joueur.nationalite.id" name="listePays"
+            required class="form-control" required name="nationalite">
+            <option [ngValue]="p.id" *ngFor="let p of listePays">{{p.nomFrFr}}</option>
+          </select>
+        </div>
+      </div>
+
+
+      <!--label>nationalite:</label><input [(ngModel)]="joueur.nationalite.nomFrFr" name="nationalite"
+          required class="form-control" required name="nationalite"/><br/>-->
+
+      <!--label>sexe:</label><input [(ngModel)]="joueur.sexe" name="sexe"
+          required class="form-control" required name="sexe"/><br/>-->
+      <div class="row mt-1">
+        <label class="col-sm-4 text-sm-end text">Sexe:</label>
+        <div class="col-sm-4">
+          <div class="form-check form-check-inline text">
+              <input [(ngModel)]="joueur.sexe" class="form-check-input" type="radio" name="sexe" [value]="0">
+              <label class="form-check-label" for="sexe">Homme</label>
+          </div>
+          <div class="form-check form-check-inline text">
+              <input [(ngModel)]="joueur.sexe" class="form-check-input" type="radio" name="sexe" [value]="1">
+              <label class="form-check-label" for="sexe">Femme</label>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <div class="text-center bg-light text-dark form-control" style="--bs-bg-opacity: .5;">
+        <button type="button" class="btn btn-info" (click)="onUpdate()" [disabled]="selectedJoueur==null ">Mise à jour</button> &nbsp;
+        <button type="button" class="btn btn-success" (click)="onNew()">Effacer</button> &nbsp;
+        <button type="button" class="btn btn-primary" (click)="onAdd()" [disabled]="selectedJoueur!=null">Ajouter</button> &nbsp;
+        <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="selectedJoueur==null">Effacer</button>
+      </div>
+    </form>
+  </div>
+</div>

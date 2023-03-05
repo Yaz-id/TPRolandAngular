@@ -1,7 +1,8 @@
 
-<p class="piedPage">
+<p class="piedPage" [style.background-color]="preferencesService.couleurFondPreferee">
     Informations
-      <select [(ngModel)]="preferencesService.couleurFondPreferee" >
-          <option *ngFor="let c of listeCouleurs" [ngValue]="c">{{c}}</option>
-      </select>
+    <select [(ngModel)]="preferencesService.couleurFondPreferee" >
+        <option *ngFor="let c of listeCouleurs" [ngValue]="c">{{c}}</option>
+    </select>
+    <br>
 </p>
